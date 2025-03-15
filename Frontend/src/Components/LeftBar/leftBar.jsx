@@ -20,10 +20,10 @@ function leftBar() {
         <a href='/' className='menuIcon'>
           <img src='/general/messages.svg' alt='messages' />
         </a>
-        <a href='/' className='menuIcon'>
-          <img src='/general/messages.svg' alt='messages' />
-        </a>
       </div>
+      <a href='/' className='menuIcon'>
+          <img src='/general/settings.svg' alt='settings' />
+        </a>
     </div>
   )
 }
