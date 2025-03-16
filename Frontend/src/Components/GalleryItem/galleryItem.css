@@ -1,14 +1,21 @@
-.galleryItem{
+.galleryItem {
   display: flex;
+  position: relative;
 }
 
-.galleryItem img{
+.galleryItem img {
   width: 100%;
   border-radius: 16px;
   object-fit: cover;
 }
 
-.galleryItem:hover .overlay{
+.overlay,
+.saveButton,
+.overlayIcons {
+  display: none;
+}
+
+.galleryItem:hover .overlay {
   display: block;
   position: absolute;
   width: 100%;
@@ -19,13 +26,7 @@
   border-radius: 16px;
 }
 
- .overlay, 
- .saveButton, 
- .overlayIcons{
-  display: none;
-}
-
-.galleryItem:hover .saveButton{
+.galleryItem:hover .saveButton {
   display: block;
   background-color: #e50829;
   color: white;
@@ -37,10 +38,10 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  border:none;
+  border: none;
 }
 
-.galleryItem:hover .overlayIcons{
+.galleryItem:hover .overlayIcons {
   display: block;
   position: absolute;
   bottom: 16px;
@@ -50,23 +51,23 @@
   gap: 8px;
 }
 
-.overlayIcons button{
+.overlayIcons button {
   width: 32px;
   height: 32px;
-  background-color: white;
   border-radius: 100%;
+  background-color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  border: none;
   cursor: pointer;
-  border:none;
 }
 
-.overlayIcons button img{
+.overlayIcons button img {
   width: 20px;
   height: 20px;
 }
 
-.overlayIcons button:hover{
+.overlayIcons button:hover {
   background-color: #f1f1f1;
 }

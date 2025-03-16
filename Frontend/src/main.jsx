@@ -7,7 +7,7 @@ import CreatePage from './Routes/CreatePage/createPage.jsx'
 import PostPage from './Routes/PostPage/postPage.jsx'
 import AuthPage from './Routes/AuthPage/authPage.jsx'
 import SearchPage from './Routes/SearchPage/searchPage.jsx'
-import ProfilePage from './Routes/UserProfilePage/userProfilePage.jsx'
+import ProfilePage from './Routes/ProfilePage/profilePage.jsx'
 import MainLayout from './Routes/Layouts/mainLayout.jsx'
 
 createRoot(document.getElementById('root')).render(
