@@ -1,33 +1,35 @@
 import React from 'react'
 import './comments.css'
-import Image from '../Image/Image'
-import EmojiPicker from 'emoji-picker-react'
+import { useQuery } from '@tanstack/react-query'
+import ApiRequest from '../../Utility/apiRequest'
+import Comment from './comment'
+import CommentForm from './commentForm'
 
-function comments() {
+function comments({id}) {
   const [open,setOpen] = React.useState(false)
+
+  const {isPending, data, error} = useQuery({
+    queryKey:['comments',id],
+    queryFn: () => ApiRequest.get(`/comments/${id}`).then((res) => res.data),
+  });
+
+  if (isPending) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
+
+  if (!data) return "User not found!";
+
+
+
   return (
     <div className='comments'>
       <div className="commentList">
-        <span className="commentCount">2 comments</span>
-        <div className="comment">
-          <Image path="/general/noAvatar.png" alt=""/>
-          <div className="commentContent">
-            <span className="commentUsername">John Doe</span>
-            <p className="commentText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget nunc nec nisl aliquam tincidunt. Nulla facilisi. Nullam nec nunc nec nisl aliquam tincidunt. Nulla facilisi.
-            <span className='commentTime'>2 hours ago</span>
-            </p>
-          </div>
-        </div>
+        <span className="commentCount">{data.length===0 ? "No comments" : data.length + " comments"} </span>
+        {data.map((comment) => (
+          <Comment key={comment._id} comment={comment} />
+        ))}
       </div>
-      <form className="commentForm">
-        <input type="text" placeholder="Add a comment"/>
-        <div className="emoji">
-          <div onClick={()=>setOpen(prev=>!prev)}>😊</div>
-          {open && <div className="emojiPicker">
-            <EmojiPicker/>
-          </div>}
-        </div>
-      </form>
+      <CommentForm id={id}/>
     </div>
   )
 }

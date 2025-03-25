@@ -1,8 +1,9 @@
 import express from 'express'
-import { test } from '../Controller/pin.controller.js';
+import { getPins,getPin } from '../Controller/pin.controller.js';
 
 const router = express.Router();
 
-router.get('/test', test);
+router.get('/', getPins);
+router.get('/:id', getPin);
 
 export default router;

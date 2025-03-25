@@ -4,10 +4,13 @@ import pinRouter from './Routes/pin.route.js';
 import commentRouter from './Routes/comment.route.js';
 import boardRouter from './Routes/board.route.js';
 import connectDB from './Utilities/connectDB.js';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 app.use(express.json());
-
+app.use(cors({origin:process.env.CLIENT_URL,credentials:true}));
+app.use(cookieParser());
 
 app.use("/users", userRouter);
 app.use("/pins", pinRouter);
