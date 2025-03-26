@@ -6,6 +6,7 @@ import Boards from '../../Components/Boards/boards'
 import {useQuery} from '@tanstack/react-query'
 import ApiRequest from '../../Utility/apiRequest'
 import { useParams } from 'react-router'
+import FollowButton from './followButton'
 
 function profilePage() {
   const [type,setType] = React.useState('saved')
@@ -25,15 +26,22 @@ function profilePage() {
 
   return (
     <div className='profilePage'>
-      <Image src={data.img || "/general/noAvatar.png"} alt=''/>
+      <Image 
+        src={data.img ? data.img : undefined} 
+        path={!data.img ? "/general/noAvatar.png" : undefined} 
+        alt="" 
+      />
       <h1 className='profileName'>{data.displayName}</h1>
       <span className='profileUsername'>@{data.userName}</span>
-      <div className="followCounts">10 followers</div>
+      <div className="followCounts">{data.followerCount} followers - {data.followingCount} followed</div>
       <div className='profileInteractions'>
         <Image path='/general/share.svg' alt=''/>
         <div className='profileButtons'>
           <button>Message</button>
-          <button>Follow</button>
+          <FollowButton
+            isFollowing={data.isFollowing}
+            username={data.userName}
+          />
         </div>
         <Image path='/general/more.svg' alt=''/>
       </div>
