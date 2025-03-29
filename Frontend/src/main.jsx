@@ -2,14 +2,16 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import {BrowserRouter,Routes,Route} from 'react-router'
-import Homepage from './Routes/HomePage/homePage.jsx'
-import CreatePage from './Routes/CreatePage/createPage.jsx'
-import PostPage from './Routes/PostPage/postPage.jsx'
-import AuthPage from './Routes/AuthPage/authPage.jsx'
-import SearchPage from './Routes/SearchPage/searchPage.jsx'
-import ProfilePage from './Routes/ProfilePage/profilePage.jsx'
 import MainLayout from './Routes/Layouts/mainLayout.jsx'
-import { QueryClient, QueryClientProvider, useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import React from 'react';  
+
+const Homepage = React.lazy(() => import('./Routes/HomePage/homePage.jsx'));
+const CreatePage = React.lazy(() => import('./Routes/CreatePage/createPage.jsx'));
+const PostPage = React.lazy(() => import('./Routes/PostPage/postPage.jsx'));
+const AuthPage = React.lazy(() => import('./Routes/AuthPage/authPage.jsx'));
+const SearchPage = React.lazy(() => import('./Routes/SearchPage/searchPage.jsx'));
+const ProfilePage = React.lazy(() => import('./Routes/ProfilePage/profilePage.jsx'));
 
 const queryClient = new QueryClient();
 

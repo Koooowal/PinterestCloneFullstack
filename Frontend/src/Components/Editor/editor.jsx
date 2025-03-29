@@ -1,18 +1,16 @@
-import React from 'react'
 import './editor.css'
-import Layers from './layers'
-import Options from './options'
-import Workspace from './workspace'
+import Layers from "./Layers";
+import Options from "./Options";
+import Workspace from "./Workspace";
 
-function editor({previewImg}) {
-  return 
-  (
-    <div>
-      <Layers previewImg={previewImg}/>
-      <Options previewImg={previewImg}/>
-      <Workspace previewImg={previewImg}/>
+function Editor({previewImg }) {
+  return (
+    <div className="editor">
+      <Layers previewImg={previewImg} />
+      <Workspace previewImg={previewImg} />
+      <Options previewImg={previewImg} />
     </div>
-  )
+  );
 }
 
-export default editor
+export default Editor

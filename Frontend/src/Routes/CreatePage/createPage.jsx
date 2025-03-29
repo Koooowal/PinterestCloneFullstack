@@ -1,23 +1,35 @@
-import React, { use, useEffect,useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import './createPage.css'
 import IKImage from '../../Components/Image/Image'
 import useAuthStore from '../../Utility/authStore'
 import {useNavigate} from 'react-router'
 import BoardForm from './boardForm'
-import { useMutation, useQuery } from 'react-query'
+import { useRef} from 'react'
 import Editor from '../../Components/Editor/editor'
+import useEditorStore from '../../Utility/editorStore'
+import { useMutation , useQuery} from '@tanstack/react-query'
+import apiRequest from '../../Utility/apiRequest'
 
+
+const addPost = async (post) => {
+  const res = await apiRequest.post("/pins", post);
+  return res.data;
+};
 
 function createPage() {
 
   const [file, setFile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [newBoard, setNewBoard] = useState("");
+  const [isNewBoardOpen, setIsNewBoardOpen] = useState(false);
   const [previewImg, setPreviewImg] = useState({
     url: "",
     width: 0,
     height: 0,
   });
 
+  const {textOptions, canvasOptions,resetStore} = useEditorStore();
+  const formRef = useRef();
   const {currentUser} = useAuthStore();
   const navigate = useNavigate();
 
@@ -29,7 +41,8 @@ function createPage() {
   }, [navigate, currentUser])
   
   useEffect(() => {
-    const img = new Image();
+    if(file){
+      const img = new Image();
     img.src = URL.createObjectURL(file);
     img.onload = () => {
       setPreviewImg({ 
@@ -38,9 +51,38 @@ function createPage() {
         height: img.height 
       });
     };
+    }
   }, [file])
 
-  
+  const mutation = useMutation({
+    mutationFn: addPost,
+    onSuccess: (data) => {
+      resetStore();
+      navigate(`/pin/${data._id}`);
+    },
+  });
+
+  const handleSubmit = async () => {
+    if (isEditing) {
+      setIsEditing(false);
+    } else {
+      const formData = new FormData(formRef.current);
+      formData.append("media", file);
+      formData.append("textOptions", JSON.stringify(textOptions));
+      formData.append("canvasOptions", JSON.stringify(canvasOptions));
+      formData.append("newBoard", newBoard);
+      mutation.mutate(formData);
+    }
+  }
+
+  const { data, isPending, error } = useQuery({
+    queryKey: ["formBoards", currentUser?._id], // Dodaj userId do queryKey
+    queryFn: () => apiRequest.get(`/boards/${currentUser?._id}`).then((res) => res.data),
+    enabled: !!currentUser, // Wykonaj zapytanie tylko jeśli jest user
+  });
+  const handleNewBoard = () => {
+    setIsNewBoardOpen((prev) => !prev);
+  };
 
 
   return (
@@ -109,16 +151,6 @@ function createPage() {
                 id="link"
               />
             </div>
-            {/* <div className="createFormItem">
-              <label htmlFor="board">Board</label>
-              <select name="board" id="board">
-                <option value="">Choose a board</option>
-                <option value="1">Board 1</option>
-                <option value="2">Board 2</option>
-                <option value="3">Board 3</option>
-              </select>
-            </div> */}
-            {/* FIXED: SELECT OR ADD BOARD */}
             {(!isPending || !error) && (
               <div className="createFormItem">
                 <label htmlFor="board">Board</label>
