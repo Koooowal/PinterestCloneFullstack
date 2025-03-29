@@ -1,1 +1,0 @@
-import{f as e,j as t}from"./index-DyXkp5GY.js";import{G as o}from"./gallery-CEZopNvp.js";import"./useBaseQuery-BtjSr1f8.js";function d(){let[r]=e();const a=r.get("search"),s=r.get("boardId");return t.jsx(o,{search:a,boardId:s})}export{d as default};
