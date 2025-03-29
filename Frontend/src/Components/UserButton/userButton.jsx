@@ -1,7 +1,7 @@
 import React from 'react'
 import './userButton.css'
 import { useState } from 'react';
-import Image from '../Image/Image'
+import Image from '../Image/image'
 import apiRequest from '../../Utility/apiRequest';
 import { useNavigate } from 'react-router';
 import useAuthStore from '../../Utility/authStore';
