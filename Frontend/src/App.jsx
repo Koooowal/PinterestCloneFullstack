@@ -10,6 +10,7 @@ const App = () => {
       <LeftBar />
       <div className='content'>
         <TopBar />
+        
         <Gallery />
       </div>
     </div>
