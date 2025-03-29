@@ -1,6 +1,6 @@
 import React,{useState}from 'react'
 import './postInteractions.css'
-import Image from '../Image/Image'
+import Image from '../Image/image'
 import { useQuery } from '@tanstack/react-query'
 import ApiRequest from '../../Utility/apiRequest'
 import { useQueryClient } from '@tanstack/react-query'

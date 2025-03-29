@@ -1,7 +1,7 @@
 import React from 'react'
 import './galleryItem.css'
 import { Link } from 'react-router'
-import Image from '../Image/Image'
+import Image from '../Image/image'
 
 function galleryItem({item}) {
   const optimizedHeight = (372*item.height)/item.width

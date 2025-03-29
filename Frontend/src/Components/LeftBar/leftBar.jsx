@@ -1,6 +1,6 @@
 import React from 'react'
 import './leftBar.css'
-import Image from '../Image/Image'
+import Image from '../Image/image'
 import {Link} from 'react-router'
 function leftBar() {
   return (

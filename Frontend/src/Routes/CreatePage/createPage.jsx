@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import './createPage.css'
-import IKImage from '../../Components/Image/Image'
+import IKImage from '../../Components/Image/image'
 import useAuthStore from '../../Utility/authStore'
 import {useNavigate} from 'react-router'
 import BoardForm from './boardForm'

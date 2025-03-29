@@ -1,6 +1,6 @@
 import React from 'react'
 import './editor.css'
-import Image from '../Image/Image'
+import Image from '../Image/image'
 import useEditorStore from '../../Utility/editorStore'
 
 function layers() {

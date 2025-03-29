@@ -1,4 +1,4 @@
-import Image from "../Image/Image";
+import Image from "../Image/image";
 import {format} from "timeago.js" 
 import './comments.css'
 

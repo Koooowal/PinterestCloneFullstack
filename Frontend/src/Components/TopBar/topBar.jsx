@@ -2,7 +2,7 @@ import React from 'react'
 import './topBar.css'
 import { useNavigate } from 'react-router'
 import UserButton from '../UserButton/userButton'
-import Image from '../Image/Image'
+import Image from '../Image/image'
 
 function topBar() {
   const navigate=useNavigate();

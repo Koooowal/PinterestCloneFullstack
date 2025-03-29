@@ -1,6 +1,6 @@
 import React from 'react'
 import './boards.css'
-import Image from '../Image/Image'
+import Image from '../Image/image'
 import { useQuery } from '@tanstack/react-query'
 import ApiRequest from '../../Utility/apiRequest'
 import {format} from 'timeago.js'

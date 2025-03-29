@@ -1,6 +1,6 @@
 import React from 'react'
 import './postPage.css'
-import Image from '../../Components/Image/Image'
+import Image from '../../Components/Image/image'
 import PostInteractions from '../../Components/PostInteractions/postInteractions'
 import { Link, useParams } from 'react-router'
 import Comments from '../../Components/Comments/comments'
