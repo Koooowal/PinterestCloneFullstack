@@ -1,6 +1,6 @@
 import React from 'react'
 import './searchPage.css'
-import Gallery from '../../Components/Gallery/Gallery'
+import Gallery from '../../Components/Gallery/gallery'
 import { useSearchParams } from 'react-router'
 
 function searchPage() {
