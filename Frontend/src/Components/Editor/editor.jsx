@@ -1,7 +1,7 @@
 import './editor.css'
-import Layers from "./Layers";
-import Options from "./Options";
-import Workspace from "./Workspace";
+import Layers from "./layers";
+import Options from "./options";
+import Workspace from "./workspace";
 
 function Editor({previewImg }) {
   return (
