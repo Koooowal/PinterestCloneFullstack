@@ -1,6 +1,6 @@
 import React from 'react'
 import './homePage.css'
-import Gallery from '../../Components/Gallery/Gallery'
+import Gallery from '../../Components/Gallery/gallery'
 
 function homePage() {
   return (
