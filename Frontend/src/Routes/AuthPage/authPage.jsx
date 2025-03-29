@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './authPage.css'
-import Image from '../../Components/Image/Image'
+import Image from '../../Components/Image/image'
 import apiRequest from '../../Utility/apiRequest'
 import { useNavigate } from 'react-router'
 import useAuthStore from '../../Utility/authStore'
