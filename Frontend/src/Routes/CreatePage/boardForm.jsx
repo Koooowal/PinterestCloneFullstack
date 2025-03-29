@@ -1,6 +1,6 @@
 import React from 'react'
 import './createPage.css'
-import Image from '../../Components/Image/Image'
+import Image from '../../Components/Image/image'
 
 const boardForm = ({ setIsNewBoardOpen, setNewBoard }) => {
   const handleSubmit = (e) => {
